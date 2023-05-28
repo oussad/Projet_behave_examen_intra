@@ -1,25 +1,27 @@
-name: Exécution du test Behave
+name: Run Behave Tests
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  run-tests:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout du code source
-      uses: actions/checkout@v2
-      
-    - name: Configuration de Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Installation des dépendances
-      run: |
-        python -m pip install --upgrade pip
-        pip install behave
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Exécution du test Behave
-      run: behave
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Behave Tests
+        run: behave
