@@ -1,27 +1,13 @@
-name: Run Behave Tests
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run Behave Tests
-        run: behave
+ - name: Run Behave Tests
+  # You may pin to the exact commit or the version.
+  # uses: cryptic-wizard/run-behave-tests@807782f65f4230837a87be7496dc5ff5b258fcfe
+   uses: cryptic-wizard/run-behave-tests@v0.3.0
+    with:
+    # Name of dependencies file (example: requirements.txt or example_project/requirements.txt or src/example_project/requirements.txt)
+    requirements-name: # optional, default is requirements.txt
+    # Path of the features parent folder if not in root (example: example_project (if example_project/features) or src/example_project/tests (if src/example_project/tests/features))
+    test-path: # optional, default is 
+    # Name of the output file (example: results.txt or plain.output)
+    test-output-name: # optional, default is results.txt
+    # Set to false to disable uploading artifact automatically
+    upload-artifact: # optional, default is true
