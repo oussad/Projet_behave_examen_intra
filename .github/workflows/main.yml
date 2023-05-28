@@ -1,4 +1,4 @@
-name: Exécution du test Behave
+name: Exécution du test Behave1
 on:
   push:
     branches:
