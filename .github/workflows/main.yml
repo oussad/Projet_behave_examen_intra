@@ -1,4 +1,4 @@
- - name: Run Behave Tests
+ - name: Run Behave Test
   # You may pin to the exact commit or the version.
   # uses: cryptic-wizard/run-behave-tests@807782f65f4230837a87be7496dc5ff5b258fcfe
    uses: cryptic-wizard/run-behave-tests@v0.3.0
