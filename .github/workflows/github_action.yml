@@ -1,31 +1,33 @@
-name: Run Behave Tests
+name: Exécution des tests Behave
 
 on:
   push:
     branches:
-      - master
+      - master  # Branche à surveiller pour les pushs
+  pull_request:
+    branches:
+      - master  # Branche à surveiller pour les pull requests
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Install Behave
-        run: pip install behave
-      - name: Run Behave Tests
-        run: behave
- 
-       
+    runs-on: windows-latest
     
+    steps:
+    - name: Checkout du code source
+      uses: actions/checkout@v2
+    
+    - name: Configuration de Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11.1  # Version de Python que vous souhaitez utiliser
+    
+    - name: Installation des dépendances
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Spécifiez le chemin vers votre fichier de dépendances
+    
+    - name: Exécution des tests Behave
+      run: |
+        behave  # Commande pour exécuter les tests Behave
+       
+
